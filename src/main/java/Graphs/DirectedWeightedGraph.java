@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DirectedWeightedGraph <NodeType, EdgeType> implements Graph <NodeType, EdgeType> {
-    List<NodeType> nodes;
+    private final List<NodeType> nodes;
 
     public DirectedWeightedGraph(){
         nodes = new ArrayList<>();
