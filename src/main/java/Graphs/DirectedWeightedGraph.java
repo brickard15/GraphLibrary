@@ -30,7 +30,7 @@ public class DirectedWeightedGraph <NodeType, EdgeType> implements Graph <NodeTy
 
     @Override
     public void addNode(final NodeType node) {
-
+        nodes.add(node);
     }
 
     @Override
