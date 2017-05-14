@@ -1,5 +1,5 @@
-public interface Graph <N, E>{
+public interface Graph <NodeType, EdgeType>{
 
-    public boolean hasNode(N node);
-    public boolean hasEdge(N node1, N node2);
+    public boolean hasNode(NodeType node);
+    public boolean hasEdge(NodeType node1, NodeType node2);
 }
