@@ -1,5 +1,3 @@
-import java.util.Optional;
-
 public interface Graph <NodeType, EdgeType>{
 
     public boolean hasNode(NodeType node);
