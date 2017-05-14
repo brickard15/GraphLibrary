@@ -1,4 +1,5 @@
 package Nodes;
 
-public interface Node {
+public interface Node <NodeType, EdgeType>{
+
 }
