@@ -1,9 +1,26 @@
 package Graphs;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DirectedWeightedGraph <NodeType, EdgeType> implements Graph <NodeType, EdgeType> {
+    List<NodeType> nodes;
+
+    public DirectedWeightedGraph(){
+        nodes = new ArrayList<>();
+    }
+
     @Override
     public boolean hasNode(final NodeType node) {
-        return false;
+        final boolean[] isPresent = {false};
+
+        nodes.forEach((possibleNode) -> {
+            if (node.equals(possibleNode)){
+                isPresent[0] = true;
+            }
+        });
+
+        return isPresent[0];
     }
 
     @Override
