@@ -2,6 +2,10 @@ package Nodes;
 
 public class Node <NodeType>{
 
+    public Node(NodeType nodeData){
+
+    }
+
     public void addEdge(int otherNodeID){
 
     }
