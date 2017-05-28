@@ -2,11 +2,11 @@ package Nodes;
 
 public class Node <NodeType>{
 
-    public void addEdge(int nodeID){
+    public void addEdge(int otherNodeID){
 
     }
 
-    public boolean hasEdge(NodeType node){
+    public boolean hasEdge(int otherNodeID){
         return false;
     }
 
