@@ -10,5 +10,7 @@ public class Node <NodeType>{
         return false;
     }
 
-
+    public int getNodeID(){
+        return 0;
+    }
 }
