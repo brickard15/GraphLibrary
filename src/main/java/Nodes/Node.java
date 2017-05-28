@@ -1,8 +1,8 @@
 package Nodes;
 
-public class Node <NodeType, EdgeType>{
+public class Node <NodeType>{
 
-    public void addEdge(NodeType node, EdgeType edge){
+    public void addEdge(int nodeID1, int nodeID2){
 
     }
 
@@ -13,4 +13,6 @@ public class Node <NodeType, EdgeType>{
     public boolean hasEdge(NodeType node){
         return false;
     }
+
+
 }
