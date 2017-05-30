@@ -42,7 +42,6 @@ public class Node <NodeDataType, NodeIDType, EdgeType>{
         return result[0];
     }
 
-    //TODO: Maybe this should just be an index.
     public NodeIDType getNodeID(){
         return nodeID;
     }
