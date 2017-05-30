@@ -30,6 +30,10 @@ public class Node <NodeDataType, NodeIDType, EdgeType>{
         });
     }
 
+    protected List<P2<NodeIDType, EdgeType>> getEdges(){
+        return edges;
+    }
+
     public boolean hasEdge(NodeIDType otherNodeID){
         final boolean[] result = {false};
 
