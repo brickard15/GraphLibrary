@@ -9,13 +9,25 @@ import static org.junit.Assert.assertEquals;
 
 public class NodeTest {
 
-    @Test
-    public void addEdgeWithOneEdgeTest(){
+    public Node<Integer, Integer, Integer> setupNodeWithOneEdge(){
         Node<Integer, Integer, Integer> node = new Node(1, 0);
         node.addEdge(2, 1);
+        return node;
+    }
+
+    @Test
+    public void addEdgeWithOneEdgeTest(){
+        Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
 
         List<P2<Integer, Integer>> possibleEdges = node.getEdges();
 
         assertEquals(2, possibleEdges.get(0)._1(), 0.0);
     }
+
+    @Test
+    public void hasEdgeWithOneEdgePositiveResult(){
+
+    }
+
+    //TODO: Create hasEdgeWithOneEdgeNegativeResult test method.
 }
