@@ -2,14 +2,16 @@ package Nodes;
 
 import java.util.HashMap;
 
-public class Node <NodeType, EdgeType>{
+public class Node <NodeDataType, NodeIDType, EdgeType>{
 
-    private final NodeType nodeData;
+    private final NodeDataType nodeData;
     private final HashMap<Integer, EdgeType> edges;
+    private final NodeIDType nodeID;
 
-    public Node(NodeType nodeData){
+    public Node(NodeDataType nodeData, NodeIDType nodeID){
         this.nodeData = nodeData;
         edges = new HashMap<>();
+        this.nodeID = nodeID;
     }
 
     public void addEdge(int otherNodeID, EdgeType edgeData){
@@ -21,8 +23,7 @@ public class Node <NodeType, EdgeType>{
     }
 
     //TODO: Maybe this should just be an index.
-    //TODO: Also maybe it should return an optional? But optionals don't work with ints.
-    public int getNodeID(){
-        return 0;
+    public NodeIDType getNodeID(){
+        return nodeID;
     }
 }
