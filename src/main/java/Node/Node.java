@@ -1,4 +1,4 @@
-package Nodes;
+package Node;
 
 import fj.P2;
 
