@@ -35,4 +35,10 @@ public class NodeTest {
         Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
         assertFalse(node.hasEdge(3));
     }
+
+    @Test
+    public void getNodeIDTest() {
+        Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
+        assertEquals(0, node.getNodeID(), 0.0);
+    }
 }
