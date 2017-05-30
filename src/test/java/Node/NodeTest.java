@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class NodeTest {
@@ -29,5 +30,9 @@ public class NodeTest {
         assertTrue(node.hasEdge(2));
     }
 
-    //TODO: Create hasEdgeWithOneEdgeNegativeResult test method.
+    @Test
+    public void hasEdgeWithOneEdgeNegativeResult(){
+        Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
+        assertFalse(node.hasEdge(3));
+    }
 }
