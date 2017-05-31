@@ -41,4 +41,12 @@ public class NodeTest {
         Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
         assertEquals(0, node.getNodeID(), 0.0);
     }
+
+    @Test
+    public void getEdgesWithOneEdgeOneResult(){
+        Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
+        List<P2<Integer, Integer>> edges = node.getEdges(2);
+        assertEquals(1, edges.size());
+        assertEquals(2, edges.get(0)._1(), 0.0);
+    }
 }
