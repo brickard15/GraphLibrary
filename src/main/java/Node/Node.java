@@ -34,6 +34,18 @@ public class Node <NodeDataType, NodeIDType, EdgeType>{
         return edges;
     }
 
+    public List<P2<NodeIDType, EdgeType>> getEdges(NodeIDType otherNodeID){
+        List<P2<NodeIDType, EdgeType>> possibleEdges = new ArrayList<>();
+
+        edges.forEach(edge -> {
+            if (edge._1().equals(otherNodeID)){
+                possibleEdges.add(edge);
+            }
+        });
+
+        return possibleEdges;
+    }
+
     public boolean hasEdge(NodeIDType otherNodeID){
         final boolean[] result = {false};
 
