@@ -49,4 +49,11 @@ public class NodeTest {
         assertEquals(1, edges.size());
         assertEquals(2, edges.get(0)._1(), 0.0);
     }
+
+    @Test
+    public void  getNodeDataPositiveTest(){
+        Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
+        Integer nodeData = node.getNodeData();
+        assertEquals(1, nodeData, 0.0);
+    }
 }
