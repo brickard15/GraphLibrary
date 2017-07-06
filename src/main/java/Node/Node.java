@@ -3,9 +3,10 @@ package Node;
 import fj.P2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class Node <NodeDataType, NodeIDType, EdgeType>{
+public class Node <NodeDataType, NodeIDType, EdgeType> implements Iterable<P2<NodeIDType, EdgeType>>{
     private final NodeDataType nodeData;
     private final List<P2<NodeIDType, EdgeType>> edges;
     private final NodeIDType nodeID;
@@ -37,7 +38,7 @@ public class Node <NodeDataType, NodeIDType, EdgeType>{
     public List<P2<NodeIDType, EdgeType>> getEdges(NodeIDType otherNodeID){
         List<P2<NodeIDType, EdgeType>> possibleEdges = new ArrayList<>();
 
-        edges.forEach(edge -> {
+        forEach(edge -> {
             if (edge._1().equals(otherNodeID)){
                 possibleEdges.add(edge);
             }
@@ -49,7 +50,7 @@ public class Node <NodeDataType, NodeIDType, EdgeType>{
     public boolean hasEdge(NodeIDType otherNodeID){
         final boolean[] result = {false};
 
-        edges.forEach(edgeTuple -> {
+        forEach(edgeTuple -> {
             if (edgeTuple._1().equals(otherNodeID)){
                 result[0] = true;
             }
@@ -60,5 +61,14 @@ public class Node <NodeDataType, NodeIDType, EdgeType>{
 
     public NodeIDType getNodeID(){
         return nodeID;
+    }
+
+    public NodeDataType getNodeData(){
+        return nodeData;
+    }
+
+    @Override
+    public Iterator<P2<NodeIDType, EdgeType>> iterator() {
+        return edges.iterator();
     }
 }
