@@ -62,6 +62,8 @@ public class Node <NodeDataType, NodeIDType, EdgeType>{
         return nodeID;
     }
 
-    //TODO: Create get NodeData method.
+    public NodeDataType getNodeData(){
+        return nodeData;
+    }
 
 }
