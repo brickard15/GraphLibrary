@@ -1,3 +1,5 @@
+package Graphs;
+
 public interface Graph <NodeType, EdgeType>{
 
     public boolean hasNode(final NodeType node);
