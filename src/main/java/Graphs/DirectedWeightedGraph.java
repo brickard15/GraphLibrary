@@ -1,12 +1,17 @@
 package Graphs;
 
+import Node.Node;
+import NodeIdGenerators.NodeIdGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class DirectedWeightedGraph <NodeType, EdgeType> implements Graph <NodeType, EdgeType> {
-    private final List<NodeType> nodes;
+public class DirectedWeightedGraph <NodeType, NodeIdType, EdgeType> implements Graph <NodeType, EdgeType> {
+    private final List<Node<NodeType, NodeIdType, EdgeType>> nodes;
+    private final NodeIdGenerator<NodeIdType> nodeIdGenerator;
 
-    public DirectedWeightedGraph(){
+    public DirectedWeightedGraph(NodeIdGenerator<NodeIdType> nodeIdGenerator){
+        this.nodeIdGenerator =  nodeIdGenerator;
         nodes = new ArrayList<>();
     }
 
