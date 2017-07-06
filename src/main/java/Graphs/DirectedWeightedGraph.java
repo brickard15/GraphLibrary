@@ -8,15 +8,13 @@ import java.util.List;
 
 public class DirectedWeightedGraph <NodeType, NodeIdType, EdgeType> implements Graph <NodeType, EdgeType> {
     private final List<Node<NodeType, NodeIdType, EdgeType>> nodes;
-    private final NodeIdGenerator<NodeIdType> nodeIdGenerator;
 
-    public DirectedWeightedGraph(NodeIdGenerator<NodeIdType> nodeIdGenerator){
-        this.nodeIdGenerator =  nodeIdGenerator;
+    public DirectedWeightedGraph(){
         nodes = new ArrayList<>();
     }
 
     @Override
-    public boolean hasNode(final NodeType node) {
+    public boolean hasNode(final Node node) {
         final boolean[] isPresent = {false};
 
         nodes.forEach((possibleNode) -> {
