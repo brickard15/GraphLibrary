@@ -35,7 +35,7 @@ public class DirectedWeightedGraph <NodeType, NodeIdType, EdgeType> implements G
 
     @Override
     public void addNode(final NodeType node) {
-        nodes.add(node);
+
     }
 
     @Override
