@@ -1,2 +1,3 @@
-public interface NodeIdGenerator {
+public interface NodeIdGenerator <IdType>{
+    public IdType getNextID();
 }
