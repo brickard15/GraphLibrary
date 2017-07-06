@@ -15,22 +15,22 @@ public class DirectedWeightedGraph <NodeType, NodeIdType, EdgeType> implements G
 
 
     @Override
-    public boolean hasNode(Object nodeId) {
+    public boolean hasNode(NodeIdType nodeId) {
         return false;
     }
 
     @Override
-    public boolean hasEdge(Object nodeIdType1, Object nodeIdType2) {
+    public boolean hasEdge(NodeIdType nodeIdType1, NodeIdType nodeIdType2) {
         return false;
     }
 
     @Override
-    public void addNode(Object nodeData, Object nodeId) {
+    public void addNode(NodeType nodeData, NodeIdType nodeId) {
 
     }
 
     @Override
-    public void addEdge(Object nodeId1, Object NodeId2, Object edgeData) {
+    public void addEdge(NodeIdType nodeId1, NodeIdType NodeId2, EdgeType edgeData) {
 
     }
 }
