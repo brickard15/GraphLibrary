@@ -12,8 +12,8 @@ import static org.junit.Assert.assertTrue;
 public class NodeTest {
 
     public Node<Integer, Integer, Integer> setupNodeWithOneEdge(){
-        Node<Integer, Integer, Integer> node = new Node(1, 0);
-        node.addEdge(2, 1);
+        Node<Integer, Integer, Integer> node = new Node(0, 1);
+        node.addEdge(2, 3);
         return node;
     }
 
