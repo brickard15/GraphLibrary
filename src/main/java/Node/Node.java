@@ -5,6 +5,7 @@ import fj.P2;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 public class Node <NodeIdType, NodeDataType, EdgeType> implements Iterable<P2<NodeIdType, EdgeType>>{
     private final NodeIdType nodeID;
@@ -55,6 +56,20 @@ public class Node <NodeIdType, NodeDataType, EdgeType> implements Iterable<P2<No
                 result[0] = true;
             }
         });
+
+        return result[0];
+    }
+
+    public Optional<EdgeType> getEdgeData(NodeIdType otherNodeId){
+        final Optional<EdgeType>[] result = new Optional[]{Optional.empty()};
+
+        if (hasEdge(otherNodeId)){
+            edges.forEach(edge -> {
+                if (edge._1().equals(otherNodeId)){
+                    result[0] = Optional.of(edge._2());
+                }
+            });
+        }
 
         return result[0];
     }

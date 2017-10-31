@@ -1,6 +1,7 @@
 package Node;
 
 import fj.P2;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -55,5 +56,12 @@ public class NodeTest {
         Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
         Integer nodeData = node.getNodeData();
         assertEquals(1, nodeData, 0.0);
+    }
+
+    @Test
+    public void getEdgeDataTest(){
+        Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
+        int edgeData = node.getEdgeData( 2).get();
+        Assert.assertEquals(3, edgeData , 0.0);
     }
 }
