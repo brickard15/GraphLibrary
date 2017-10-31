@@ -45,7 +45,15 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
 
     @Override
     public boolean hasEdge(NodeIdType nodeIdType1, NodeIdType nodeIdType2) {
-        return false;
+        final boolean[] result = {false};
+
+        nodes.forEach(node -> {
+            if (node.getNodeID().equals(nodeIdType1) && node.hasEdge(nodeIdType2)){
+                result[0] = true;
+            }
+        });
+
+        return result[0];
     }
 
     @Override
@@ -56,7 +64,13 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
     }
 
     @Override
-    public void addEdge(NodeIdType nodeId1, NodeIdType NodeId2, EdgeType edgeData) {
-
+    public void addEdge(NodeIdType nodeId1, NodeIdType nodeId2, EdgeType edgeData) {
+        if (hasNode(nodeId1) && hasNode(nodeId2)){
+            nodes.forEach(node -> {
+                if (node.getNodeID().equals(nodeId1)){
+                    node.addEdge(nodeId2, edgeData);
+                }
+            });
+        }
     }
 }

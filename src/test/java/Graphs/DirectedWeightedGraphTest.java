@@ -35,7 +35,11 @@ public class DirectedWeightedGraphTest {
 
     @Test
     public void addEdgeTest(){
-//        testGraph
+        testGraph.addNode(1, 100);
+        testGraph.addNode(2, 100);
+        testGraph.addEdge(1, 2, 1000);
+        Assert.assertEquals(2, testGraph.getNodeCount());
+        Assert.assertTrue(testGraph.hasEdge(1, 2));
     }
 
     //TODO: Implement these tests
