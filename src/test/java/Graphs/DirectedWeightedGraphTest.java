@@ -5,41 +5,53 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DirectedWeightedGraphTest {
-    private Graph<Integer, Integer, Integer> testGraph;
+    private Graph<Integer, Integer, Integer> emptyTestGraph;
+    private Graph<Integer, Integer, Integer> testGraphWith2Nodes;
 
     @Before
-    public void setup(){
-        testGraph = new DirectedWeightedGraph<>();
+    public void setupGraphWithNoNodes(){
+        emptyTestGraph = new DirectedWeightedGraph<>();
+    }
+
+    @Before
+    public void setupTestGraphWith2Nodes(){
+        testGraphWith2Nodes = new DirectedWeightedGraph<>();
+        testGraphWith2Nodes.addNode(1, 100);
+        testGraphWith2Nodes.addNode(2, 200);
     }
 
     @Test
     public void addOneNodeTest(){
-        Assert.assertEquals(0, testGraph.getNodeCount());
-        testGraph.addNode(1, 100);
-        Assert.assertTrue(testGraph.hasNode(1));
-        Assert.assertEquals(1, testGraph.getNodeCount());
-        Assert.assertTrue(testGraph.getNodeData(1).isPresent());
-        Assert.assertEquals(100, testGraph.getNodeData(1).get(),0.0);
+        Assert.assertEquals(0, emptyTestGraph.getNodeCount());
+        emptyTestGraph.addNode(1, 100);
+        Assert.assertTrue(emptyTestGraph.hasNode(1));
+        Assert.assertEquals(1, emptyTestGraph.getNodeCount());
+        Assert.assertTrue(emptyTestGraph.getNodeData(1).isPresent());
+        Assert.assertEquals(100, emptyTestGraph.getNodeData(1).get(),0.0);
     }
 
     @Test
     public void addSameNodeIdTwice(){
-        Assert.assertEquals(0, testGraph.getNodeCount());
-        testGraph.addNode(1, 100);
-        Assert.assertEquals(1, testGraph.getNodeCount());
-        Assert.assertEquals(100, testGraph.getNodeData(1).get(), 0.0);
-        testGraph.addNode(1, 101);
-        Assert.assertEquals(1, testGraph.getNodeCount());
-        Assert.assertEquals(100, testGraph.getNodeData(1).get(), 0.0);
+        Assert.assertEquals(0, emptyTestGraph.getNodeCount());
+        emptyTestGraph.addNode(1, 100);
+        Assert.assertEquals(1, emptyTestGraph.getNodeCount());
+        Assert.assertEquals(100, emptyTestGraph.getNodeData(1).get(), 0.0);
+        emptyTestGraph.addNode(1, 101);
+        Assert.assertEquals(1, emptyTestGraph.getNodeCount());
+        Assert.assertEquals(100, emptyTestGraph.getNodeData(1).get(), 0.0);
     }
 
     @Test
     public void addEdgeTest(){
-        testGraph.addNode(1, 100);
-        testGraph.addNode(2, 100);
-        testGraph.addEdge(1, 2, 1000);
-        Assert.assertEquals(2, testGraph.getNodeCount());
-        Assert.assertTrue(testGraph.hasEdge(1, 2));
+        testGraphWith2Nodes.addEdge(1, 2, 1000);
+        Assert.assertEquals(2, testGraphWith2Nodes.getNodeCount());
+        Assert.assertTrue(testGraphWith2Nodes.hasEdge(1, 2));
+    }
+
+    @Test
+    public void getEdgeValueTest(){
+        testGraphWith2Nodes.addEdge(1, 2, 1000);
+        Assert.assertEquals(1000, testGraphWith2Nodes.getEdgeData(1, 2).get(), 0.0);
     }
 
     //TODO: Implement these tests

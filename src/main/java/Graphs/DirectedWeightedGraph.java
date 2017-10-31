@@ -27,6 +27,7 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
         return result[0];
     }
 
+    @Override
     public Optional<NodeData> getNodeData(final NodeIdType nodeId){
         final Optional<NodeData>[] result = new Optional[]{Optional.empty()};
 
@@ -52,6 +53,20 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
                 result[0] = true;
             }
         });
+
+        return result[0];
+    }
+
+    public Optional<EdgeType> getEdgeData(NodeIdType node1Id, NodeIdType node2Id){
+        final Optional<EdgeType>[] result = new Optional[]{Optional.empty()};
+
+        if (hasNode(node1Id) && hasNode(node2Id)){
+            nodes.forEach(node -> {
+                if (node.getNodeID().equals(node1Id) && node.hasEdge(node2Id)){
+                    result[0] = node.getEdgeData(node2Id);
+                }
+            });
+        }
 
         return result[0];
     }
