@@ -13,6 +13,17 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
         nodes = new ArrayList<>();
     }
 
+    @Override
+    public void addNode(final NodeIdType nodeId, final NodeData nodeData) {
+        if (!hasNode(nodeId)){
+            nodes.add(new Node<NodeIdType, NodeData, EdgeType>(nodeId, nodeData));
+        }
+    }
+
+    @Override
+    public int getNodeCount(){
+        return nodes.size();
+    }
 
     @Override
     public boolean hasNode(NodeIdType nodeId) {
@@ -40,8 +51,15 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
         return result[0];
     }
 
-    public int getNodeCount(){
-        return nodes.size();
+    @Override
+    public void addEdge(NodeIdType nodeId1, NodeIdType nodeId2, EdgeType edgeData) {
+        if (hasNode(nodeId1) && hasNode(nodeId2)){
+            nodes.forEach(node -> {
+                if (node.getNodeID().equals(nodeId1)){
+                    node.addEdge(nodeId2, edgeData);
+                }
+            });
+        }
     }
 
     @Override
@@ -57,6 +75,7 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
         return result[0];
     }
 
+    @Override
     public Optional<EdgeType> getEdgeData(NodeIdType node1Id, NodeIdType node2Id){
         final Optional<EdgeType>[] result = new Optional[]{Optional.empty()};
 
@@ -69,23 +88,5 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
         }
 
         return result[0];
-    }
-
-    @Override
-    public void addNode(final NodeIdType nodeId, final NodeData nodeData) {
-        if (!hasNode(nodeId)){
-            nodes.add(new Node<NodeIdType, NodeData, EdgeType>(nodeId, nodeData));
-        }
-    }
-
-    @Override
-    public void addEdge(NodeIdType nodeId1, NodeIdType nodeId2, EdgeType edgeData) {
-        if (hasNode(nodeId1) && hasNode(nodeId2)){
-            nodes.forEach(node -> {
-                if (node.getNodeID().equals(nodeId1)){
-                    node.addEdge(nodeId2, edgeData);
-                }
-            });
-        }
     }
 }
