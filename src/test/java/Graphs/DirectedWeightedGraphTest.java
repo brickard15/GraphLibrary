@@ -54,14 +54,16 @@ public class DirectedWeightedGraphTest {
         Assert.assertEquals(1000, testGraphWith2Nodes.getEdgeData(1, 2).get(), 0.0);
     }
 
-    //TODO: Implement these tests
     @Test
-    public void hasNodePositiveTest(){
-
+    public void has2Nodes(){
+        Assert.assertTrue(testGraphWith2Nodes.hasNode(1));
+        Assert.assertTrue(testGraphWith2Nodes.hasNode(2));
+        Assert.assertFalse(testGraphWith2Nodes.hasNode(3));
     }
 
     @Test
-    public void hasNodeNegativeTest(){
-
+    public void hasNoNodes(){
+        Assert.assertFalse(emptyTestGraph.hasNode(1));
+        Assert.assertFalse(emptyTestGraph.hasNode(2));
     }
 }
