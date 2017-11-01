@@ -1,6 +1,7 @@
 package Node;
 
 import fj.P2;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
@@ -12,8 +13,8 @@ import static org.junit.Assert.assertTrue;
 public class NodeTest {
 
     public Node<Integer, Integer, Integer> setupNodeWithOneEdge(){
-        Node<Integer, Integer, Integer> node = new Node(1, 0);
-        node.addEdge(2, 1);
+        Node<Integer, Integer, Integer> node = new Node(0, 1);
+        node.addEdge(2, 3);
         return node;
     }
 
@@ -55,5 +56,23 @@ public class NodeTest {
         Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
         Integer nodeData = node.getNodeData();
         assertEquals(1, nodeData, 0.0);
+    }
+
+    @Test
+    public void getEdgeDataTest(){
+        Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
+        List<Integer> edgeData = node.getEdgeData( 2);
+        Assert.assertEquals(3, edgeData.get(0) , 0.0);
+    }
+
+    @Test
+    public void multipleEdgesWithSameNode(){
+        Node<Integer, Integer, Integer> node = new Node<Integer, Integer, Integer>(1, 10);
+        node.addEdge(2, 200);
+        node.addEdge(2, 202);
+        List<P2<Integer, Integer>> edges = node.getEdges();
+        Assert.assertEquals(2, edges.size());
+        Assert.assertEquals(200, edges.get(0)._2(), 0.0);
+        Assert.assertEquals(202, edges.get(1)._2(), 0.0);
     }
 }
