@@ -1,22 +1,23 @@
-package Graphs;
+package Multigraphs;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.List;
 
-public class DirectedWeightedGraphTest {
-    private Graph<Integer, Integer, Integer> emptyTestGraph;
-    private Graph<Integer, Integer, Integer> testGraphWith2Nodes;
+public class DirectedWeightedMultigraphTest {
+    private Multigraph<Integer, Integer, Integer> emptyTestGraph;
+    private Multigraph<Integer, Integer, Integer> testGraphWith2Nodes;
 
     @Before
     public void setupGraphWithNoNodes(){
-        emptyTestGraph = new DirectedWeightedGraph<>();
+        emptyTestGraph = new DirectedWeightedMultigraph<>();
     }
 
     @Before
     public void setupTestGraphWith2Nodes(){
-        testGraphWith2Nodes = new DirectedWeightedGraph<>();
+        testGraphWith2Nodes = new DirectedWeightedMultigraph<>();
         testGraphWith2Nodes.addNode(1, 100);
         testGraphWith2Nodes.addNode(2, 200);
     }

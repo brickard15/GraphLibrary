@@ -1,9 +1,9 @@
-package Graphs;
+package Multigraphs;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface Graph <NodeIdType, NodeType, EdgeType>{
+public interface Multigraph<NodeIdType, NodeType, EdgeType>{
     public void addNode(NodeIdType nodeId, final NodeType nodeData);
     public int getNodeCount();
     public boolean hasNode(final NodeIdType nodeId);

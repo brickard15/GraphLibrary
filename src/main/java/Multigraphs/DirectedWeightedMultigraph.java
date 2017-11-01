@@ -1,4 +1,4 @@
-package Graphs;
+package Multigraphs;
 
 import Node.Node;
 
@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements Graph <NodeIdType, NodeData, EdgeType> {
+public class DirectedWeightedMultigraph<NodeIdType, NodeData, EdgeType> implements Multigraph<NodeIdType, NodeData, EdgeType> {
     private final List<Node<NodeIdType, NodeData, EdgeType>> nodes;
 
-    public DirectedWeightedGraph(){
+    public DirectedWeightedMultigraph(){
         nodes = new ArrayList<>();
     }
 
