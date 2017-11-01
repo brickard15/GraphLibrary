@@ -5,22 +5,23 @@ import fj.P2;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
-public class Node <NodeDataType, NodeIDType, EdgeType> implements Iterable<P2<NodeIDType, EdgeType>>{
+public class Node <NodeIdType, NodeDataType, EdgeType> implements Iterable<P2<NodeIdType, EdgeType>>{
+    private final NodeIdType nodeID;
     private final NodeDataType nodeData;
-    private final List<P2<NodeIDType, EdgeType>> edges;
-    private final NodeIDType nodeID;
+    private final List<P2<NodeIdType, EdgeType>> edges;
 
-    public Node(NodeDataType nodeData, NodeIDType nodeID){
+    public Node(NodeIdType nodeID, NodeDataType nodeData){
+        this.nodeID = nodeID;
         this.nodeData = nodeData;
         edges = new ArrayList<>();
-        this.nodeID = nodeID;
     }
 
-    public void addEdge(NodeIDType otherNodeID, EdgeType edgeData){
-        edges.add(new P2<NodeIDType, EdgeType>() {
+    public void addEdge(NodeIdType otherNodeID, EdgeType edgeData){
+        edges.add(new P2<NodeIdType, EdgeType>() {
             @Override
-            public NodeIDType _1() {
+            public NodeIdType _1() {
                 return otherNodeID;
             }
 
@@ -31,12 +32,12 @@ public class Node <NodeDataType, NodeIDType, EdgeType> implements Iterable<P2<No
         });
     }
 
-    protected List<P2<NodeIDType, EdgeType>> getEdges(){
+    protected List<P2<NodeIdType, EdgeType>> getEdges(){
         return edges;
     }
 
-    public List<P2<NodeIDType, EdgeType>> getEdges(NodeIDType otherNodeID){
-        List<P2<NodeIDType, EdgeType>> possibleEdges = new ArrayList<>();
+    public List<P2<NodeIdType, EdgeType>> getEdges(NodeIdType otherNodeID){
+        List<P2<NodeIdType, EdgeType>> possibleEdges = new ArrayList<>();
 
         forEach(edge -> {
             if (edge._1().equals(otherNodeID)){
@@ -47,7 +48,7 @@ public class Node <NodeDataType, NodeIDType, EdgeType> implements Iterable<P2<No
         return possibleEdges;
     }
 
-    public boolean hasEdge(NodeIDType otherNodeID){
+    public boolean hasEdge(NodeIdType otherNodeID){
         final boolean[] result = {false};
 
         forEach(edgeTuple -> {
@@ -59,7 +60,21 @@ public class Node <NodeDataType, NodeIDType, EdgeType> implements Iterable<P2<No
         return result[0];
     }
 
-    public NodeIDType getNodeID(){
+    public List<EdgeType> getEdgeData(NodeIdType otherNodeId){
+        final List<EdgeType> result = new ArrayList<>();
+
+        if (hasEdge(otherNodeId)){
+            edges.forEach(edge -> {
+                if (edge._1().equals(otherNodeId)){
+                    result.add(edge._2());
+                }
+            });
+        }
+
+        return result;
+    }
+
+    public NodeIdType getNodeID(){
         return nodeID;
     }
 
@@ -68,7 +83,7 @@ public class Node <NodeDataType, NodeIDType, EdgeType> implements Iterable<P2<No
     }
 
     @Override
-    public Iterator<P2<NodeIDType, EdgeType>> iterator() {
+    public Iterator<P2<NodeIdType, EdgeType>> iterator() {
         return edges.iterator();
     }
 }
