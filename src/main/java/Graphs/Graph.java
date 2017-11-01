@@ -1,5 +1,6 @@
 package Graphs;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface Graph <NodeIdType, NodeType, EdgeType>{
@@ -9,7 +10,7 @@ public interface Graph <NodeIdType, NodeType, EdgeType>{
     public Optional<NodeType> getNodeData(final NodeIdType nodeId);
     public void addEdge(final NodeIdType nodeId1, final NodeIdType NodeId2, final EdgeType edgeData);
     public boolean hasEdge(final NodeIdType nodeIdType1, final NodeIdType nodeIdType2);
-    public Optional<EdgeType> getEdgeData(NodeIdType node1Id, NodeIdType node2Id);
+    public List<EdgeType> getEdgeData(NodeIdType node1Id, NodeIdType node2Id);
     //TODO: Consider do we need a getNumberOfEdges() for all nodes?
     //TODO: Consider do we need a getNumberOfEdges(NodeIdType nodeId) for a specific node?
 }

@@ -76,17 +76,17 @@ public class DirectedWeightedGraph <NodeIdType, NodeData, EdgeType> implements G
     }
 
     @Override
-    public Optional<EdgeType> getEdgeData(NodeIdType node1Id, NodeIdType node2Id){
-        final Optional<EdgeType>[] result = new Optional[]{Optional.empty()};
+    public List<EdgeType> getEdgeData(NodeIdType node1Id, NodeIdType node2Id){
+        List<EdgeType> edgeValues = new ArrayList<>();
 
         if (hasNode(node1Id) && hasNode(node2Id)){
             nodes.forEach(node -> {
                 if (node.getNodeID().equals(node1Id) && node.hasEdge(node2Id)){
-                    result[0] = node.getEdgeData(node2Id);
+                    node.getEdgeData(node2Id).forEach(edgeData -> edgeValues.add(edgeData));
                 }
             });
         }
 
-        return result[0];
+        return edgeValues;
     }
 }

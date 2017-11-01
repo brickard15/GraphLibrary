@@ -60,18 +60,18 @@ public class Node <NodeIdType, NodeDataType, EdgeType> implements Iterable<P2<No
         return result[0];
     }
 
-    public Optional<EdgeType> getEdgeData(NodeIdType otherNodeId){
-        final Optional<EdgeType>[] result = new Optional[]{Optional.empty()};
+    public List<EdgeType> getEdgeData(NodeIdType otherNodeId){
+        final List<EdgeType> result = new ArrayList<>();
 
         if (hasEdge(otherNodeId)){
             edges.forEach(edge -> {
                 if (edge._1().equals(otherNodeId)){
-                    result[0] = Optional.of(edge._2());
+                    result.add(edge._2());
                 }
             });
         }
 
-        return result[0];
+        return result;
     }
 
     public NodeIdType getNodeID(){

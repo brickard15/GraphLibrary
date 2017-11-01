@@ -61,7 +61,18 @@ public class NodeTest {
     @Test
     public void getEdgeDataTest(){
         Node<Integer, Integer, Integer> node = setupNodeWithOneEdge();
-        int edgeData = node.getEdgeData( 2).get();
-        Assert.assertEquals(3, edgeData , 0.0);
+        List<Integer> edgeData = node.getEdgeData( 2);
+        Assert.assertEquals(3, edgeData.get(0) , 0.0);
+    }
+
+    @Test
+    public void multipleEdgesWithSameNode(){
+        Node<Integer, Integer, Integer> node = new Node<Integer, Integer, Integer>(1, 10);
+        node.addEdge(2, 200);
+        node.addEdge(2, 202);
+        List<P2<Integer, Integer>> edges = node.getEdges();
+        Assert.assertEquals(2, edges.size());
+        Assert.assertEquals(200, edges.get(0)._2(), 0.0);
+        Assert.assertEquals(202, edges.get(1)._2(), 0.0);
     }
 }

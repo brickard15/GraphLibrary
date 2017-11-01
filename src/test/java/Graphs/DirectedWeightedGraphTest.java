@@ -3,6 +3,7 @@ package Graphs;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.List;
 
 public class DirectedWeightedGraphTest {
     private Graph<Integer, Integer, Integer> emptyTestGraph;
@@ -51,7 +52,7 @@ public class DirectedWeightedGraphTest {
     @Test
     public void getEdgeValueTest(){
         testGraphWith2Nodes.addEdge(1, 2, 1000);
-        Assert.assertEquals(1000, testGraphWith2Nodes.getEdgeData(1, 2).get(), 0.0);
+        Assert.assertEquals(1000, testGraphWith2Nodes.getEdgeData(1, 2).get(0), 0.0);
     }
 
     @Test
@@ -65,5 +66,31 @@ public class DirectedWeightedGraphTest {
     public void hasNoNodes(){
         Assert.assertFalse(emptyTestGraph.hasNode(1));
         Assert.assertFalse(emptyTestGraph.hasNode(2));
+    }
+
+    @Test
+    public void edgesAreDirectional(){
+        testGraphWith2Nodes.addEdge(1, 2, 1000);
+        Assert.assertTrue(testGraphWith2Nodes.hasEdge(1,2));
+        Assert.assertFalse(testGraphWith2Nodes.hasEdge(2, 1));
+    }
+
+    @Test
+    public void addMultipleEdgesBetweenTheSamePoints(){
+        testGraphWith2Nodes.addEdge(1, 2, 1000);
+        testGraphWith2Nodes.addEdge(2,1, 2000);
+        Assert.assertTrue(testGraphWith2Nodes.hasEdge(1, 2));
+        Assert.assertTrue(testGraphWith2Nodes.hasEdge(2, 1));
+    }
+
+    @Test
+    public void addMultipleEdgesGoingTheSameDirectionBetweenTheSameNodes(){
+        testGraphWith2Nodes.addEdge(1, 2, 1000);
+        testGraphWith2Nodes.addEdge(1, 2, 1001);
+        Assert.assertTrue(testGraphWith2Nodes.hasEdge(1, 2));
+        List<Integer> edgeDataPoints = testGraphWith2Nodes.getEdgeData(1,2);
+        Assert.assertEquals(2, edgeDataPoints.size());
+        Assert.assertEquals(1000, edgeDataPoints.get(0), 0.0);
+        Assert.assertEquals(1001, edgeDataPoints.get(1), 0.0);
     }
 }
