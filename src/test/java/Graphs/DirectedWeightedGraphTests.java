@@ -50,4 +50,17 @@ public class DirectedWeightedGraphTests {
         testGraph.addEdge(1.0, 2.0, 100.0);
         Assert.assertTrue(testGraph.hasEdge(1.0, 2.0));
     }
+
+    @Test
+    public void addEdgeWithOneNode(){
+        testGraph.addNode(1.0, 10.0);
+        testGraph.addEdge(1.0, 2.0, 100.0);
+        Assert.assertFalse(testGraph.hasEdge(1.0, 2.0));
+    }
+
+    @Test
+    public void addEdgeWithNoNodes(){
+        testGraph.addEdge(1.0, 2.0, 10.0);
+        Assert.assertFalse(testGraph.hasEdge(1.0, 2.0));
+    }
 }
