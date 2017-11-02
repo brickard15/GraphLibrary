@@ -26,4 +26,9 @@ public class DirectedWeightedGraph<NodeId, NodeData, EdgeData> implements Graph<
     public Optional<NodeData> getNodeData(NodeId nodeId) {
         return graph.getNodeData(nodeId);
     }
+
+    @Override
+    public int getNodeCount() {
+        return graph.getNodeCount();
+    }
 }
