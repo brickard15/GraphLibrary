@@ -31,4 +31,14 @@ public class DirectedWeightedGraph<NodeId, NodeData, EdgeData> implements Graph<
     public int getNodeCount() {
         return graph.getNodeCount();
     }
+
+    @Override
+    public void addEdge(NodeId nodeId1, NodeId nodeId2, EdgeData edgeData) {
+        graph.addEdge(nodeId1, nodeId2, edgeData);
+    }
+
+    @Override
+    public boolean hasEdge(NodeId nodeId1, NodeId nodeId2) {
+        return graph.hasEdge(nodeId1, nodeId2);
+    }
 }

@@ -42,4 +42,12 @@ public class DirectedWeightedGraphTests {
     public void doesNotHaveNodes(){
         Assert.assertEquals(0, testGraph.getNodeCount());
     }
+
+    @Test
+    public void addOneEdge(){
+        testGraph.addNode(1.0, 10.0);
+        testGraph.addNode(2.0, 20.0);
+        testGraph.addEdge(1.0, 2.0, 100.0);
+        Assert.assertTrue(testGraph.hasEdge(1.0, 2.0));
+    }
 }
