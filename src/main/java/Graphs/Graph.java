@@ -9,4 +9,5 @@ public interface Graph<NodeId, NodeData, EdgeData> {
     public int getNodeCount();
     public void addEdge(final NodeId nodeId1, final NodeId nodeId2, final EdgeData edgeData);
     public boolean hasEdge(final NodeId nodeId1, final NodeId nodeId2);
+    public Optional<EdgeData> getEdgeData(NodeId node1Id, NodeId node2Id);
 }

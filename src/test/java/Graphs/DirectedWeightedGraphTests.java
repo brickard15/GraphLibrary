@@ -49,6 +49,7 @@ public class DirectedWeightedGraphTests {
         testGraph.addNode(2.0, 20.0);
         testGraph.addEdge(1.0, 2.0, 100.0);
         Assert.assertTrue(testGraph.hasEdge(1.0, 2.0));
+        Assert.assertEquals(100.0, testGraph.getEdgeData(1.0, 2.0).get(), 0.0);
     }
 
     @Test
@@ -56,11 +57,22 @@ public class DirectedWeightedGraphTests {
         testGraph.addNode(1.0, 10.0);
         testGraph.addEdge(1.0, 2.0, 100.0);
         Assert.assertFalse(testGraph.hasEdge(1.0, 2.0));
+        Assert.assertFalse(testGraph.getEdgeData(1.0, 2.0).isPresent());
     }
 
     @Test
     public void addEdgeWithNoNodes(){
         testGraph.addEdge(1.0, 2.0, 10.0);
         Assert.assertFalse(testGraph.hasEdge(1.0, 2.0));
+        Assert.assertFalse(testGraph.getEdgeData(1.0, 2.0).isPresent());
+    }
+
+    @Test
+    public void addTwoEdgesBetweenTheNodesSameDirection(){
+        testGraph.addNode(1.0, 10.0);
+        testGraph.addNode(2.0, 20.0);
+        testGraph.addEdge(1.0, 2.0, 100.0);
+        testGraph.addEdge(1.0, 2.0, 100.1);
+        Assert.assertEquals(100.0, testGraph.getEdgeData(1.0, 2.0).get(), 0.0);
     }
 }
