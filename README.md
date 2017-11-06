@@ -1,3 +1,8 @@
+
+Master | Development
+------------ | -------------
+[![Build Status](https://travis-ci.org/brickard15/GraphLibrary.svg?branch=master)](https://travis-ci.org/brickard15/GraphLibrary) | [![Build Status](https://travis-ci.org/brickard15/GraphLibrary.svg?branch=Development)](https://travis-ci.org/brickard15/GraphLibrary)
+
 # GraphLibrary
 Graph Library seeks to be a comprehensive Java tool for using and traversing graphs.
 
