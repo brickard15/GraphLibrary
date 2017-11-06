@@ -82,6 +82,10 @@ public class Node <NodeIdType, NodeDataType, EdgeType> implements Iterable<P2<No
         return nodeData;
     }
 
+    public int getDegree(){
+        return edges.size();
+    }
+
     @Override
     public Iterator<P2<NodeIdType, EdgeType>> iterator() {
         return edges.iterator();
