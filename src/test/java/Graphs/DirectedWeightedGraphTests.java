@@ -77,11 +77,20 @@ public class DirectedWeightedGraphTests {
     }
 
     @Test
-    public void getOutDegree(){
+    public void getOutDegreeWithNoEdges(){
+        testGraph.addNode(1.0, 10.0);
+        testGraph.addNode(2.0, 20.0);
+        Assert.assertEquals(0, testGraph.getOutDegree(1.0));
+        Assert.assertEquals(0, testGraph.getOutDegree(2.0));
+    }
+
+    @Test
+    public void getOutDegreeAfterAddingEdgeTwice(){
         testGraph.addNode(1.0, 10.0);
         testGraph.addNode(2.0, 20.0);
         testGraph.addEdge(1.0, 2.0, 100.0);
         testGraph.addEdge(1.0, 2.0, 100.1);
         Assert.assertEquals(1, testGraph.getOutDegree(1.0));
+        Assert.assertEquals(0, testGraph.getOutDegree(2.0));
     }
 }
