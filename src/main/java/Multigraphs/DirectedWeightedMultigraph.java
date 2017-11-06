@@ -89,4 +89,16 @@ public class DirectedWeightedMultigraph<NodeIdType, NodeData, EdgeType> implemen
 
         return edgeValues;
     }
+
+    @Override
+    public int getOutDegree(NodeIdType nodeId) {
+        final int[] result = {0};
+        nodes.forEach(node -> {
+            if (node.getNodeID().equals(nodeId)){
+                result[0] = node.getDegree();
+            }
+        });
+
+        return result[0];
+    }
 }
