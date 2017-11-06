@@ -94,4 +94,18 @@ public class DirectedWeightedMultigraphTest {
         Assert.assertEquals(1000, edgeDataPoints.get(0), 0.0);
         Assert.assertEquals(1001, edgeDataPoints.get(1), 0.0);
     }
+
+    @Test
+    public void getDegreeWithNoEdges(){
+        Assert.assertEquals(0, testGraphWith2Nodes.getOutDegree(1) );
+        Assert.assertEquals(0, testGraphWith2Nodes.getOutDegree(2));
+    }
+
+    @Test
+    public void getDegreeWithTwoEdgesGoingTheSameDirectionBetweenTheSameNodes(){
+        testGraphWith2Nodes.addEdge(1, 2, 1000);
+        testGraphWith2Nodes.addEdge(1, 2, 1001);
+        Assert.assertEquals(2, testGraphWith2Nodes.getOutDegree(1));
+        Assert.assertEquals(0, testGraphWith2Nodes.getOutDegree(2));
+    }
 }

@@ -35,7 +35,9 @@ public class DirectedWeightedGraph<NodeId, NodeData, EdgeData> implements Graph<
 
     @Override
     public void addEdge(NodeId nodeId1, NodeId nodeId2, EdgeData edgeData) {
-        graph.addEdge(nodeId1, nodeId2, edgeData);
+        if (!graph.hasEdge(nodeId1, nodeId2)){
+            graph.addEdge(nodeId1, nodeId2, edgeData);
+        }
     }
 
     @Override
@@ -52,5 +54,10 @@ public class DirectedWeightedGraph<NodeId, NodeData, EdgeData> implements Graph<
         }
 
         return Optional.empty();
+    }
+
+    @Override
+    public int getOutDegree(NodeId nodeId) {
+        return graph.getOutDegree(nodeId);
     }
 }
