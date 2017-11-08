@@ -75,4 +75,17 @@ public class NodeTest {
         Assert.assertEquals(200, edges.get(0)._2(), 0.0);
         Assert.assertEquals(202, edges.get(1)._2(), 0.0);
     }
+
+    @Test
+    public  void getDegreeWithEdges(){
+        Node<Integer, Integer, Integer> node = new Node(1, 10);
+        Assert.assertEquals(0, node.getDegree());
+    }
+
+    @Test
+    public void getDegreeOfOne(){
+        Node<Integer, Integer, Integer> node = new Node(1, 10);
+        node.addEdge(2, 100);
+        Assert.assertEquals(1, node.getDegree());
+    }
 }
