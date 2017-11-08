@@ -21,7 +21,7 @@ public class UndirectedUnweightedGraph<NodeId, NodeData, EdgeData> implements Gr
 
     @Override
     public Optional<NodeData> getNodeData(NodeId nodeId) {
-        return Optional.empty();
+        return graph.getNodeData(nodeId);
     }
 
     @Override
