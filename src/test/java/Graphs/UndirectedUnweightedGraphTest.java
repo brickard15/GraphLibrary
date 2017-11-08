@@ -23,18 +23,21 @@ public class UndirectedUnweightedGraphTest {
     @Test
     public void hasNodeWithNoNodes(){
         Assert.assertFalse(testGraph.hasNode("City1"));
+        Assert.assertEquals(0, testGraph.getNodeCount());
     }
 
     @Test
     public void AddSingleNode(){
         testGraph.addNode(CITY_1_ID, "Murray, KY");
         Assert.assertTrue(testGraph.hasNode("City1"));
+        Assert.assertEquals(1, testGraph.getNodeCount());
     }
 
     @Test
     public void AddTwoNodes(){
         Assert.assertTrue(testGraphWith2Nodes.hasNode(CITY_1_ID));
         Assert.assertTrue(testGraphWith2Nodes.hasNode(CITY_2_ID));
+        Assert.assertEquals(2, testGraphWith2Nodes.getNodeCount());
     }
 
     @Test
