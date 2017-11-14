@@ -28,7 +28,7 @@ public class DirectedUnweightedGraph<NodeId, NodeData, EdgeData> implements Grap
 
     @Override
     public int getNodeCount() {
-        return 0;
+        return graph.getNodeCount();
     }
 
     @Override
