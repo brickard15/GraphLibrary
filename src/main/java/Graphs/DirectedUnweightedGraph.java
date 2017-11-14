@@ -2,11 +2,12 @@ package Graphs;
 
 import java.util.Optional;
 
-public class UndirectedUnweightedGraph<NodeId, NodeData>{
-    private Graph<NodeId, NodeData, Integer> graph;
+public class DirectedUnweightedGraph<NodeId, NodeData>{
+
+    private final Graph<NodeId, NodeData, Integer> graph;
     private static final int defaultEdgeData = 1;
 
-    public UndirectedUnweightedGraph(){
+    public DirectedUnweightedGraph(){
         graph = new DirectedWeightedGraph<>();
     }
 
@@ -27,14 +28,11 @@ public class UndirectedUnweightedGraph<NodeId, NodeData>{
     }
 
     public void addEdge(NodeId nodeId1, NodeId nodeId2) {
-        if (graph.hasNode(nodeId1) && graph.hasNode(nodeId2)){
-            graph.addEdge(nodeId1, nodeId2, defaultEdgeData);
-            graph.addEdge(nodeId2, nodeId1, defaultEdgeData);
-        }
+        graph.addEdge(nodeId1, nodeId2, defaultEdgeData);
     }
 
     public boolean hasEdge(NodeId nodeId1, NodeId nodeId2) {
-        return graph.hasEdge(nodeId1, nodeId2) && graph.hasEdge(nodeId2, nodeId1);
+        return graph.hasEdge(nodeId1, nodeId2);
     }
 
     public int getOutDegree(NodeId nodeId) {
