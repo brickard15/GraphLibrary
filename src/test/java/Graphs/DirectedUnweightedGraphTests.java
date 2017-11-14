@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class DirectedUnweightedGraphTests {
 
-    private Graph<Integer, Point, Double> testGraph;
+    private DirectedUnweightedGraph<Integer, Point> testGraph;
     private Point point1;
     private Point point2;
 
@@ -29,7 +29,7 @@ public class DirectedUnweightedGraphTests {
     }
 
     @Test
-    public void addTwoNodeTest(){
+    public void addTwoNodes(){
         testGraph.addNode(1, point1);
         testGraph.addNode(2, point2);
         Assert.assertTrue(testGraph.hasNode(1));
@@ -39,6 +39,23 @@ public class DirectedUnweightedGraphTests {
         Assert.assertEquals(point1, testGraph.getNodeData(1).get());
         Assert.assertEquals(point2, testGraph.getNodeData(2).get());
         Assert.assertEquals(2, testGraph.getNodeCount());
+        Assert.assertEquals(0, testGraph.getOutDegree(1));
+        Assert.assertEquals(0, testGraph.getOutDegree(2));
     }
 
+    @Test
+    public void addEdge(){
+        testGraph.addNode(1, point1);
+        testGraph.addNode(2, point2);
+        testGraph.addEdge(1, 2);
+        Assert.assertTrue(testGraph.hasEdge(1, 2));
+        Assert.assertFalse(testGraph.hasEdge(2, 1));
+        Assert.assertEquals(1, testGraph.getOutDegree(1));
+        testGraph.addEdge(2, 1);
+        Assert.assertTrue(testGraph.hasEdge(2, 1));
+        testGraph.addNode(3, new Point(30, 30));
+        testGraph.addEdge(1, 3);
+        Assert.assertTrue(testGraph.hasEdge(1,3));
+        Assert.assertEquals(2, testGraph.getOutDegree(1));
+    }
 }

@@ -2,52 +2,40 @@ package Graphs;
 
 import java.util.Optional;
 
-public class DirectedUnweightedGraph<NodeId, NodeData, EdgeData> implements Graph<NodeId, NodeData, EdgeData> {
+public class DirectedUnweightedGraph<NodeId, NodeData>{
 
-    private final Graph<NodeId, NodeData, EdgeData> graph;
+    private final Graph<NodeId, NodeData, Integer> graph;
+    private static final int defaultEdgeData = 1;
 
     public DirectedUnweightedGraph(){
         graph = new DirectedWeightedGraph<>();
     }
 
-
-    @Override
     public void addNode(NodeId nodeId, NodeData nodeData) {
         graph.addNode(nodeId, nodeData);
     }
 
-    @Override
     public boolean hasNode(NodeId nodeId) {
         return graph.hasNode(nodeId);
     }
 
-    @Override
     public Optional<NodeData> getNodeData(NodeId nodeId) {
         return graph.getNodeData(nodeId);
     }
 
-    @Override
     public int getNodeCount() {
         return graph.getNodeCount();
     }
 
-    @Override
-    public void addEdge(NodeId nodeId1, NodeId nodeId2, EdgeData edgeData) {
-
+    public void addEdge(NodeId nodeId1, NodeId nodeId2) {
+        graph.addEdge(nodeId1, nodeId2, defaultEdgeData);
     }
 
-    @Override
     public boolean hasEdge(NodeId nodeId1, NodeId nodeId2) {
-        return false;
+        return graph.hasEdge(nodeId1, nodeId2);
     }
 
-    @Override
-    public Optional<EdgeData> getEdgeData(NodeId node1Id, NodeId node2Id) {
-        return null;
-    }
-
-    @Override
     public int getOutDegree(NodeId nodeId) {
-        return 0;
+        return graph.getOutDegree(nodeId);
     }
 }
