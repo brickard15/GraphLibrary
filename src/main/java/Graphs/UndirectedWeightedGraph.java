@@ -1,16 +1,13 @@
 package Graphs;
 
-import Multigraphs.DirectedWeightedMultigraph;
-import Multigraphs.Multigraph;
-
-import java.util.List;
 import java.util.Optional;
 
-public class DirectedWeightedGraph<NodeId, NodeData, EdgeData> implements Graph<NodeId, NodeData, EdgeData>{
-    private final Multigraph<NodeId, NodeData, EdgeData> graph;
+public class UndirectedWeightedGraph <NodeId, NodeData, EdgeData> implements Graph<NodeId, NodeData, EdgeData> {
 
-    public DirectedWeightedGraph(){
-        graph = new DirectedWeightedMultigraph<>();
+    private Graph<NodeId, NodeData, EdgeData> graph;
+
+    public UndirectedWeightedGraph(){
+        graph = new DirectedWeightedGraph<>();
     }
 
     @Override
@@ -35,9 +32,8 @@ public class DirectedWeightedGraph<NodeId, NodeData, EdgeData> implements Graph<
 
     @Override
     public void addEdge(NodeId nodeId1, NodeId nodeId2, EdgeData edgeData) {
-        if (!graph.hasEdge(nodeId1, nodeId2) && !nodeId1.equals(nodeId2)){
-            graph.addEdge(nodeId1, nodeId2, edgeData);
-        }
+        graph.addEdge(nodeId1, nodeId2, edgeData);
+        graph.addEdge(nodeId2, nodeId1, edgeData);
     }
 
     @Override
@@ -47,13 +43,7 @@ public class DirectedWeightedGraph<NodeId, NodeData, EdgeData> implements Graph<
 
     @Override
     public Optional<EdgeData> getEdgeData(NodeId node1Id, NodeId node2Id) {
-        List<EdgeData> edgeResults = graph.getEdgeData(node1Id, node2Id);
-
-        if (!edgeResults.isEmpty()){
-            return Optional.of(edgeResults.get(0));
-        }
-
-        return Optional.empty();
+        return graph.getEdgeData(node1Id, node2Id);
     }
 
     @Override
