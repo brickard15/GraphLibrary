@@ -17,17 +17,17 @@ public class UndirectedWeightedGraph <NodeId, NodeData, EdgeData> implements Gra
 
     @Override
     public boolean hasNode(NodeId nodeId) {
-        return false;
+        return graph.hasNode(nodeId);
     }
 
     @Override
     public Optional<NodeData> getNodeData(NodeId nodeId) {
-        return null;
+        return graph.getNodeData(nodeId);
     }
 
     @Override
     public int getNodeCount() {
-        return 0;
+        return graph.getNodeCount();
     }
 
     @Override
