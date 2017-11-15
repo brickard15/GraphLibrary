@@ -48,6 +48,6 @@ public class UndirectedWeightedGraph <NodeId, NodeData, EdgeData> implements Gra
 
     @Override
     public int getOutDegree(NodeId nodeId) {
-        return 0;
+        return graph.getOutDegree(nodeId);
     }
 }

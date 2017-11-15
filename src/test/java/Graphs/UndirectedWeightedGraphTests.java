@@ -40,4 +40,21 @@ public class UndirectedWeightedGraphTests {
         Assert.assertTrue(graphWith3Nodes.getEdgeData(3, 1).isPresent());
         Assert.assertEquals(100, graphWith3Nodes.getEdgeData(3, 1).get(),0.0);
     }
+
+    @Test
+    public void addOneEdgeOutDegreeForBothNodes(){
+        graphWith3Nodes.addEdge(1, 3, 100);
+        Assert.assertEquals(0, graphWith3Nodes.getOutDegree(2));
+        Assert.assertEquals(1, graphWith3Nodes.getOutDegree(1));
+        Assert.assertEquals(1, graphWith3Nodes.getOutDegree(3));
+    }
+
+    @Test
+    public void add2EdgesBetween3Nodes(){
+        graphWith3Nodes.addEdge(1, 2, 100);
+        graphWith3Nodes.addEdge(1, 3, 200);
+        Assert.assertEquals(2, graphWith3Nodes.getOutDegree(1));
+        Assert.assertEquals(1, graphWith3Nodes.getOutDegree(2));
+        Assert.assertEquals(1, graphWith3Nodes.getOutDegree(3));
+    }
 }
