@@ -57,4 +57,13 @@ public class UndirectedWeightedGraphTests {
         Assert.assertEquals(1, graphWith3Nodes.getOutDegree(2));
         Assert.assertEquals(1, graphWith3Nodes.getOutDegree(3));
     }
+
+    @Test
+    public void addLoop(){
+        graph.addNode(1, 10);
+        graph.addEdge(1, 1, 100);
+        Assert.assertFalse(graph.hasEdge(1, 1));
+        Assert.assertEquals(0, graph.getOutDegree(1));
+        Assert.assertFalse(graph.getEdgeData(1, 1).isPresent());
+    }
 }
