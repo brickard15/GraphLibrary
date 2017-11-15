@@ -29,5 +29,15 @@ public class UndirectedWeightedGraphTests {
         Assert.assertTrue(graphWith3Nodes.hasEdge(2, 1));
     }
 
-
+    @Test
+    public void addSameEdgeDifferentDirection(){
+        graphWith3Nodes.addEdge(1, 3, 100);
+        graphWith3Nodes.addEdge(3, 1, 300);
+        Assert.assertTrue(graphWith3Nodes.hasEdge(1, 3));
+        Assert.assertTrue(graphWith3Nodes.hasEdge(3, 1));
+        Assert.assertTrue(graphWith3Nodes.getEdgeData(1, 3).isPresent());
+        Assert.assertEquals(100, graphWith3Nodes.getEdgeData(1, 3).get(),0.0);
+        Assert.assertTrue(graphWith3Nodes.getEdgeData(3, 1).isPresent());
+        Assert.assertEquals(100, graphWith3Nodes.getEdgeData(3, 1).get(),0.0);
+    }
 }

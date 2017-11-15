@@ -43,7 +43,7 @@ public class UndirectedWeightedGraph <NodeId, NodeData, EdgeData> implements Gra
 
     @Override
     public Optional<EdgeData> getEdgeData(NodeId node1Id, NodeId node2Id) {
-        return null;
+        return graph.getEdgeData(node1Id, node2Id);
     }
 
     @Override
